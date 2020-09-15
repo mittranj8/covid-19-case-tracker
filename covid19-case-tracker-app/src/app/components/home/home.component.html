@@ -10,6 +10,79 @@
 </div>
 <hr />
 
+<!-- radio buttons -->
+<div class="ui form">
+  <div class="inline fields">
+    <label for="sct">Select Case Type:</label>
+
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          id="c"
+          #c
+          (click)="updateChart(c)"
+          value="c"
+          name="casetype"
+          checked=""
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="c">Confirmed</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          name="casetype"
+          value="r"
+          #r
+          (click)="updateChart(r)"
+          id="r"
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="r">Recovered</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          name="casetype"
+          value="d"
+          #d
+          (click)="updateChart(d)"
+          id="d"
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="d">Deaths</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          name="casetype"
+          value="a"
+          #a
+          (click)="updateChart(a)"
+          id="a"
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="a">Active</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- google charts -->
 <div class="row">
   <div class="col"><google-chart [data]="pieChart"></google-chart></div>
   <div class="col"><google-chart [data]="columnChart"></google-chart></div>
