@@ -23,6 +23,7 @@ export class CountriesComponent implements OnInit {
   lineChart: GoogleChartInterface = {
     chartType: "LineChart",
   };
+  loading = true;
 
   constructor(private dataService: DataServiceService) {}
 
@@ -46,6 +47,7 @@ export class CountriesComponent implements OnInit {
         .subscribe({
           complete: () => {
             this.updateValues("US");
+            this.loading = false;
             // this.selectedConData = this.dateWiseData["US"];
             // this.updateChart();
           },
