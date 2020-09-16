@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { GlobalDataSummary } from "src/app/models/global-data";
 import { DataServiceService } from "src/app/services/data-service.service";
-import { GoogleChartInterface } from "ng2-google-charts";
 
 @Component({
   selector: "app-home",
@@ -17,12 +16,18 @@ export class HomeComponent implements OnInit {
   loading = true;
 
   //adding charts to show data
-  pieChart: GoogleChartInterface = {
-    chartType: "PieChart",
-  };
-
-  columnChart: GoogleChartInterface = {
-    chartType: "ColumnChart",
+  tableData = [];
+  chart = {
+    PieChart: "PieChart",
+    ColumnChart: "ColumnChart",
+    height: 500,
+    options: {
+      animation: {
+        duration: 1000,
+        easing: "out",
+      },
+      is3D: true,
+    },
   };
 
   constructor(private dataService: DataServiceService) {}
@@ -55,8 +60,8 @@ export class HomeComponent implements OnInit {
   }
 
   initChart(caseType: string) {
-    let tableData = [];
-    tableData.push(["Country", "Cases"]);
+    this.tableData = [];
+    // this.tableData.push(["Country", "Cases"]);
 
     this.globalData.forEach((cs) => {
       let value: number;
@@ -69,31 +74,7 @@ export class HomeComponent implements OnInit {
 
       if (caseType == "a") if (cs.active > 2000) value = cs.active;
 
-      tableData.push([cs.country, value]);
+      this.tableData.push([cs.country, value]);
     });
-
-    this.pieChart = {
-      chartType: "PieChart",
-      dataTable: tableData,
-      options: {
-        animation: {
-          durattion: 1000,
-          easing: "out",
-        },
-        height: 500,
-      },
-    };
-
-    this.columnChart = {
-      chartType: "ColumnChart",
-      dataTable: tableData,
-      options: {
-        animation: {
-          durattion: 1000,
-          easing: "out",
-        },
-        height: 500,
-      },
-    };
   }
 }

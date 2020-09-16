@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { GoogleChartInterface } from "ng2-google-charts";
 import { merge } from "rxjs";
 import { DateWiseData } from "src/app/models/date-wise-data";
 import { GlobalDataSummary } from "src/app/models/global-data";
@@ -20,9 +19,6 @@ export class CountriesComponent implements OnInit {
   totalRecovered = 0;
   dateWiseData: {};
   selectedConData: DateWiseData[];
-  lineChart: GoogleChartInterface = {
-    chartType: "LineChart",
-  };
   loading = true;
 
   constructor(private dataService: DataServiceService) {}
@@ -85,17 +81,5 @@ export class CountriesComponent implements OnInit {
     this.selectedConData.forEach((cs) => {
       dataTable.push([cs.date, cs.cases]);
     });
-
-    this.lineChart = {
-      chartType: "LineChart",
-      dataTable: dataTable,
-      options: {
-        animation: {
-          durattion: 1000,
-          easing: "out",
-        },
-        height: 500,
-      },
-    };
   }
 }

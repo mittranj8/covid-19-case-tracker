@@ -2,7 +2,7 @@
   <div class="ui loader">Loading</div>
 </div>
 
-<div class="jumbotron bg-white text-center">
+<div class="jumbotron bg-white text-center p-0 m-0">
   <h1 class="display-4">Corona Covid-19 Tracker</h1>
   <hr />
   <app-dashboard-card
@@ -88,6 +88,23 @@
 
 <!-- google charts -->
 <div class="row">
-  <div class="col"><google-chart [data]="pieChart"></google-chart></div>
-  <div class="col"><google-chart [data]="columnChart"></google-chart></div>
+  <div class="col">
+    <google-chart
+      [type]="chart.PieChart"
+      [options]="chart.options"
+      style="width: 100%"
+      [height]="chart.height"
+      [data]="tableData"
+    ></google-chart>
+  </div>
+
+  <div class="col">
+    <google-chart
+      [type]="chart.ColumnChart"
+      style="width: 100%"
+      [options]="chart.options"
+      [height]="chart.height"
+      [data]="tableData"
+    ></google-chart>
+  </div>
 </div>
