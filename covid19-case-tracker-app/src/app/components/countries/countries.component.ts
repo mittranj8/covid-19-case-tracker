@@ -17,9 +17,16 @@ export class CountriesComponent implements OnInit {
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
-  dateWiseData: {};
+  dateWiseData;
   selectedConData: DateWiseData[];
   loading = true;
+  options: {
+    height: 500;
+    animation: {
+      duration: 1000;
+      easing: "out";
+    };
+  };
 
   constructor(private dataService: DataServiceService) {}
 
@@ -63,6 +70,8 @@ export class CountriesComponent implements OnInit {
   }
 
   updateValues(country: string) {
+    console.log(country);
+
     this.data.forEach((cs) => {
       if (cs.country == country) {
         this.totalActive = cs.active;
@@ -71,7 +80,11 @@ export class CountriesComponent implements OnInit {
         this.totalConfirmed = cs.confirmed;
       }
     });
+
+    console.log();
     this.selectedConData = this.dateWiseData[country];
+    console.log(this.selectedConData);
+
     this.updateChart();
   }
 
