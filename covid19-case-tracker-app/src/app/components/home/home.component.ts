@@ -72,6 +72,10 @@ export class HomeComponent implements OnInit {
       chartType: "PieChart",
       dataTable: tableData,
       options: {
+        animation: {
+          durattion: 1000,
+          easing: "out",
+        },
         height: 500,
       },
     };
@@ -80,6 +84,10 @@ export class HomeComponent implements OnInit {
       chartType: "ColumnChart",
       dataTable: tableData,
       options: {
+        animation: {
+          durattion: 1000,
+          easing: "out",
+        },
         height: 500,
       },
     };
