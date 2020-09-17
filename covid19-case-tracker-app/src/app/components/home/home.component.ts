@@ -14,9 +14,9 @@ export class HomeComponent implements OnInit {
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
   loading = true;
+  tableData = [];
 
   //adding charts to show data
-  tableData = [];
   chart = {
     PieChart: "PieChart",
     ColumnChart: "ColumnChart",
@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getGlobalData().subscribe({
       next: (result) => {
-        console.log(result);
         this.globalData = result;
 
         // displaying all cases in the component
@@ -60,8 +59,8 @@ export class HomeComponent implements OnInit {
   }
 
   initChart(caseType: string) {
+    // clearing chart data
     this.tableData = [];
-    // this.tableData.push(["Country", "Cases"]);
 
     this.globalData.forEach((cs) => {
       let value: number;
